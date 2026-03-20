@@ -15,7 +15,17 @@ from pathlib import Path
 import io
 
 # 配置
-CACHE_DIR = Path("/Users/niu/.openclaw/workspace/pdf_image_tool/cache")
+import tempfile
+import os
+
+# Streamlit Cloud 使用临时目录
+if os.environ.get("STREAMLIT_SERVER_PORT"):
+    # 云端环境
+    CACHE_DIR = Path(tempfile.gettempdir()) / "pdfkoutu_cache"
+else:
+    # 本地环境
+    CACHE_DIR = Path("/Users/niu/.openclaw/workspace/pdf_image_tool/cache")
+
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
 st.set_page_config(page_title="PDF/图片处理工具", page_icon="📄", layout="wide")
