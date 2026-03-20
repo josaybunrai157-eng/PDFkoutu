@@ -18,13 +18,12 @@ import os
 
 # 配置 - 云端兼容
 if os.environ.get("STREAMLIT_SERVER_PORT"):
-    # Streamlit Cloud 环境
-    CACHE_DIR = Path(tempfile.gettempdir()) / "pdfkoutu_cache"
+    # Streamlit Cloud 环境 - 直接用 /tmp，不创建子目录
+    CACHE_DIR = Path("/tmp")
 else:
     # 本地环境
     CACHE_DIR = Path("/Users/niu/.openclaw/workspace/pdf_image_tool/cache")
-
-CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
 st.set_page_config(page_title="PDF/图片处理工具", page_icon="📄", layout="wide")
 
