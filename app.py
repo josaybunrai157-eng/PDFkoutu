@@ -13,14 +13,12 @@ from PIL import Image
 import hashlib
 from pathlib import Path
 import io
-
-# 配置
 import tempfile
 import os
 
-# Streamlit Cloud 使用临时目录
+# 配置 - 云端兼容
 if os.environ.get("STREAMLIT_SERVER_PORT"):
-    # 云端环境
+    # Streamlit Cloud 环境
     CACHE_DIR = Path(tempfile.gettempdir()) / "pdfkoutu_cache"
 else:
     # 本地环境
@@ -210,7 +208,7 @@ if uploaded_files:
                     with cols[j % 3]:
                         st.image(img_bytes, caption=img_name, use_container_width=True)
                         st.download_button(
-                            label=f"⬇️ 下载",
+                            label="⬇️ 下载",
                             data=img_bytes,
                             file_name=img_name,
                             mime="image/png",
