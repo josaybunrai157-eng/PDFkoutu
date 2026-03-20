@@ -17,7 +17,7 @@ import tempfile
 import os
 
 # 配置 - 云端兼容
-# Streamlit Cloud 运行在 /mount/src 目录下
+# Streamlit Cloud 运行在 /mount/src/pdfkoutu 目录下
 if Path("/mount/src").exists():
 # Streamlit Cloud 环境 - 直接用 /tmp
 CACHE_DIR = Path("/tmp")
